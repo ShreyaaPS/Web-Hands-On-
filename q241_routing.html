@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app = "myModule">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href ="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular-route.min.js"></script>
+    <meta name="vieport" content="width=device-width initial scale=1">
+</head>
+<script>
+    var myApp = angular
+    .module("myModule", ["ngRoute"])
+    .config(function ($routeProvider, $locationProvider) { //inject $locationProvider service
+        $locationProvider.hashPrefix(''); // add configuration
+        $routeProvider
+            .when("/home", {
+                template: "About Us"
+            })
+            .when("/services", {
+                template: "Our Services"
+            })
+            .when("/technologies", {
+                template: "Our Technologies"
+            })
+    });
+</script>
+<body>
+    <header><h2>Website Header</h2></header>
+        <div class="column">
+            <div class="links">
+            <a href="#/home">Home</a><br>
+            <a href="#/services">Our services</a><br>
+            <a href="#/technologies">Technologies</a><br>
+        </div>
+        </div>
+        <div class="content" ng-view></div>
+    <footer><h3>Website footer</h3></footer>
+</body>
+</html>

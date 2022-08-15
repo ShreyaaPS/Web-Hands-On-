@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+    <div ng-controller="myctrl">
+        <form ng-submit="add()">
+            <input type="text" name="name " ng-model="nitem.name">
+            <input type="number" name="cost" ng-model="nitem.cost">
+            <input type="submit" value="ädd">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>COST</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="i in item">
+                    <td>{{i.name}}</td>
+                    <td>{{i.cost}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+
+
+        <BR>
+        <BR>
+        <BR>
+        <div ng-model="revenue">
+            REVENUE IS {{revenue}}
+        </div>
+
+    </div>
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("myctrl", function($scope) {
+            $scope.revenue = 0;
+            $scope.add = function() {
+                $scope.revenue = $scope.revenue + (0.5 * ($scope.nitem.cost));
+                $scope.item.push({
+                    name: $scope.nitem.name,
+                    cost: $scope.nitem.cost
+
+                })
+
+            };
+
+
+            $scope.item = [{}];
+
+
+        });
+    </script>
+</body>
+
+</html>

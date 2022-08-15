@@ -1,0 +1,52 @@
+<html> 
+<head> <title>AngularJS Expressions</title> 
+<link rel="stylesheet" href="styles.css"> </head> 
+<body> 
+<h1 id="bordering" class="style1" align="center">Arithmetic Operations</h1> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!--<script src="https://code.angularjs.org/1.6.9/angular-route.js"></script> 
+<script src="https://code.angularjs.org/1.6.9/angular.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<div ng-app="DemoApp" ng-controller="myController" id="bordering" class="style1" align="center"> 
+<p>Enter First Operand</p>
+<input type="number" ng-model="number1"> 
+<p>Enter Second Operand</p> 
+<input type="number" ng-model="number2"> 
+<p>Enter Operator</p> 
+<input type="operation" ng-model="operation"> 
+<p>Result is</p> 
+<p>{{result}}<p> 
+<input type="button" ng-click="AddMe()" value="Result"> 
+</div> 
+<script type="text/javascript"> 
+var app = angular.module('DemoApp',[]); 
+app.controller('myController', function($scope) { 
+$scope.operations = [ '+', '-', '*', '/', '%' ]; 
+$scope.AddMe = function() { 
+var num1 = $scope.number1; 
+var num2 = $scope.number2; 
+switch ($scope.operation) { 
+case '+': 
+$scope.result = parseInt(num1) + parseInt(num2); 
+break; 
+case '-':
+$scope.result = parseInt(num1) - parseInt(num2); 
+break; 
+case '*': 
+$scope.result = parseInt(num1) * parseInt(num2); 
+break; 
+case '/': 
+$scope.result = parseInt(num1) / parseInt(num2); 
+break; 
+case '%': 
+$scope.result = parseInt(num1) % parseInt(num2); 
+break; 
+default: 
+$scope.result = "Invalid Selection "; 
+break; 
+} 
+};
+}); 
+</script> 
+</body> 
+</html> 

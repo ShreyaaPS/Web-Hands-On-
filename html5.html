@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+<form action="/signup" method="post">
+    <p>
+      <label>Title</label><br>
+      <label>
+        <input type="radio" name="title" value="mr">
+        Mr
+      </label>
+      <label>
+        <input type="radio" name="title" value="mrs">
+        Mrs
+      </label>
+      <label>
+        <input type="radio" name="title" value="miss">
+        Miss
+      </label>
+    </p>
+    <p>
+      <label>First name</label><br>
+      <input type="text" name="first_name">
+    </p>
+    <p>
+      <label>Last name</label><br>
+      <input type="text" name="last_name">
+    </p>
+    <p>
+      <label>Email</label><br>
+      <input type="email" name="email" required>
+    </p>
+    <p>
+      <label>Phone number</label><br>
+      <input type="tel" name="phone">
+    </p>
+    <p>
+      <label>Password</label><br>
+      <input type="password" name="password">
+    </p>
+    <p>
+      <label>Country</label><br>
+      <select>
+        <option>China</option>
+        <option>India</option>
+        <option>United States</option>
+        <option>Indonesia</option>
+        <option>Brazil</option>
+      </select>
+    </p>
+    <p>
+      <label>
+        <input type="checkbox" value="terms">
+        I agree to the <a href="/terms">terms and conditions</a>
+      </label>
+    </p>
+    <p>
+      <button>Sign up</button>
+      <button type="reset">Reset form</button>
+    </p>
+  </form>
+<p id="demo"></p>
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+  </video> 
+  <audio controls>
+    <source src="horse.ogg" type="audio/ogg">
+    <source src="horse.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio> 
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.rect(20, 20, 150, 100);
+ctx.stroke();
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script> 
+
+</body>
+</html>

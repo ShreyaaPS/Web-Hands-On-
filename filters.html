@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body  ng-app="myApp">
+
+<div ng-controller="personCtrl">
+
+<p>The name is {{ lastName | uppercase }}</p>
+<p>The name is {{ lastName | lowercase }}</p>
+
+</div>
+<div  ng-controller="nameCtrl">
+
+    <p>Type a letter in the input field:</p>
+    
+    <p><input type="text" ng-model="test"></p>
+    
+    <ul>
+      <li ng-repeat="x in names | filter:test">
+        {{ x }}
+      </li>
+    </ul>
+    
+    </div>
+    <ul  ng-controller="nameCtrl">
+        <li ng-repeat="x in names">
+            {{x | myFormat}}
+        </li>
+    </ul>
+<script>
+var app=angular.module('myApp', []).controller('personCtrl', function($scope) {
+    $scope.firstName = "John",
+    $scope.lastName = "Doe"
+
+}).controller('nameCtrl',function($scope){
+    $scope.names = [
+        'Jani',
+        'Carl',
+        'Margareth',
+        'Hege',
+        'Joe',
+        'Gustav',
+        'Birgit',
+        'Mary',
+        'Kai'
+    ];
+});
+app.filter('myFormat', function() {
+    return function(x) {
+        var i, c, txt = "";
+        for (i = 0; i < x.length; i++) {
+            c = x[i];
+            if (i % 2 == 0) {
+                c = c.toUpperCase();
+            }
+            txt += c;
+        }
+        return txt;
+    };
+});
+</script>
+
+</body>
+</html>

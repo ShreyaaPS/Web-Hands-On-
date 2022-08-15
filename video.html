@@ -1,0 +1,114 @@
+<!DOCTYPE  html>
+<html  ng-app  =  "myApp"  ng-controller  =  "myCtrl">
+<head>
+<title>Video  Player</title>
+
+<link  rel="stylesheet"  href="https://cdnjs.clo udflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link  href='https://css.gg/play-button.css'  rel='stylesheet'>
+<style>
+#vid
+{
+padding-top:  10px; padding-left:  100px;
+}
+#buttons
+{
+padding-left:  400px;
+}
+button
+{
+background-color:  rgb(5,  5,  5); border-color:  #061f4b;
+border-radius:  10%; color:  #ffffff; border-style:  solid;
+}
+div.new  {
+background-color:rgb(22,  2,  114); width:  600px;
+border:  15px  solid  rgb(7,  0,  8); padding:  20px;
+margin-left:  250px;
+
+
+}
+</style>
+</head>
+<script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body  style="background-color:  rgb(221,  172,  65);">
+    <center><h2 >Video  Player</h3></center>
+    <div  class="new">
+    <video  id="vid"  width="400"  height="400"  autoplay>
+    
+    
+    <source  src="clouds.mp4"  type=video/mp4>
+    </video>
+    </div>
+    <br>
+    <div  id="buttons">
+    <button  style="font-size:25px"  ng-click="backward()">
+    <i  class="fa  fa-fast-backward"></i>
+    </button>
+    <button  style="font-size:25px"	ng-click="play()">
+    <i  class="fa  fa-play"></i>
+    </button>
+    <button	style="font-size:25px"  ng-click="pause()">
+    <i  class="fa  fa-pause"></i>
+    </button>
+    <button  style="font-size:25px"  ng-click="forward()">
+    <i  class="fa  fa-fast-forward"></i>
+    </button>
+    <button  style="font-size:25px"  ng-click="stop()">
+    <i  class="fa  fa-stop"></i>
+    </button>
+    <button  style="font-size:25px"  ng-click="speed()">
+    0.5x
+     
+</button>
+<button  style="font-size:25px"  ng-click="speed1()">
+1x
+</button>
+<button  style="font-size:25px"  ng-click="speed2()">
+2x
+</button>
+</div>
+
+
+<script>
+var  obj  =  angular.module("myApp",  []);
+
+
+obj.controller("myCtrl",  ['$scope',  '$document ',  function  ($scope,  $document)
+{
+var  video  =  document.getElementById("vid");
+$scope.speed  =  function()
+{
+video.playbackRate  =  0.5;
+}
+$scope.speed1  =  function()
+{
+video.playbackRate  =  1;
+}
+$scope.speed2  =  function()
+{
+video.playbackRate  =  2;
+}
+$scope.play  =  function()
+{
+video.play();
+}
+$scope.pause  =  function()
+{
+video.pause();
+}
+$scope.forward  =  function()
+{
+video.currentTime  +=  5;
+}
+$scope.backward  =  function()
+{
+video.currentTime  -=  5;
+}
+$scope.stop  =  function()
+{
+video.currentTime  =  0; video.pause();
+}
+}]);
+</script>
+</body>
+</html>
+ 

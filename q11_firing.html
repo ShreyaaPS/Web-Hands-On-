@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="app">
+    <div ng-app="app" ng-controller="cont">
+        <input type="number" ng-model="num1" ng-min=0 ng-max="100">
+        <input type="number" ng-model="num2">
+        <input type="button" ng-click="fun()">
+        <p>{{val}}</p>
+        <p>{{val1}}</p>
+    </div>
+    <script>
+        app=angular.module('app',[])
+        app.service('mys',function(){
+            this.myfun=function(x,y){
+                return (x+y)/2
+            }
+        })
+        app.controller('cont',function($scope,mys){
+            $scope.fun=function(){
+                $scope.val=mys.myfun($scope.num1,$scope.num2)
+                if($scope.val <60){
+                    $scope.val1="fired"
+                }
+                else{
+                    $scope.val1="safe"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
